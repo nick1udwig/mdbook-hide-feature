@@ -156,6 +156,7 @@ impl Link {
                 let contents = std::fs::read_to_string(base.join(pat))?;
                 // run regex above on it
                 let contents = filter_features(&contents, "test");
+                let contents = contents.trim_end_matches('\n').to_string();
                 // give result
                 Ok(contents)
                 //file_to_string(base.join(pat)).chain_err(|| format!("Could not read file for link {}", self.link_text))
